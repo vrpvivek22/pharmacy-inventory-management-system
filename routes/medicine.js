@@ -7,6 +7,7 @@ const {
   addMedicine,
   updateMedicine,
   deleteMedicine,
+  getPublicMedicines,
 } = require("../controllers/medicine");
 
 router.route("/").get(getAllMedicines).post(addMedicine);
@@ -17,13 +18,6 @@ router
   .patch(updateMedicine);
 
 // ✅ Public route (accessible without authentication)
-router.get("/public", async (req, res) => {
-  try {
-    const meds = await Medicine.find({});
-    res.json(meds);
-  } catch (error) {
-    res.status(500).json({ message: "Error fetching medicines" });
-  }
-});
+router.get("/public", getPublicMedicines);
 
 module.exports = router;
