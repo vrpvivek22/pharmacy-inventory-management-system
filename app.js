@@ -34,6 +34,9 @@ app.use(
 app.use(helmet());
 app.use(cors());
 
+// public medicine route
+app.use("/api/v1/medicine/public", medicineRouter);
+
 //routes
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/medicine", authenticatedUser, medicineRouter);
