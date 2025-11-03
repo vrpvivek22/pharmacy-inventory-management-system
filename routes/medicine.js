@@ -1,5 +1,5 @@
-const expresss = require("express");
-const router = expresss.Router();
+const express = require("express");
+const router = express.Router();
 
 const {
   getAllMedicines,
@@ -15,5 +15,15 @@ router
   .get(getMedicine)
   .delete(deleteMedicine)
   .patch(updateMedicine);
+
+// ✅ Public route (accessible without authentication)
+router.get("/public", async (req, res) => {
+  try {
+    const meds = await Medicine.find({});
+    res.json(meds);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching medicines" });
+  }
+});
 
 module.exports = router;

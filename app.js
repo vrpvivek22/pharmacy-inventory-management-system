@@ -37,6 +37,9 @@ app.use(cors());
 //routes
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/medicine", authenticatedUser, medicineRouter);
+app.get("/", (req, res) => {
+  res.send("Welcome to the Pharmacy Inventory API");
+});
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
