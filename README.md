@@ -7,7 +7,7 @@ This system helps store owners keep track of medicines, expiry dates, stock leve
 
 ## 🚀 Live Demo
 
-🔗 **Render Deployment:** [https://your-app-name.onrender.com](https://your-app-name.onrender.com)
+🔗 **Render Deployment:** [https://pharmacy-api-c4f8.onrender.com](https://pharmacy-api-c4f8.onrender.com)
 
 ---
 
@@ -34,7 +34,7 @@ This system helps store owners keep track of medicines, expiry dates, stock leve
 
 ## ⚙️ Tech Stack
 
-| 🏗️ Layer           | 💡 Technology                    |
+| 🏗️ Layer           | 💡 Technology                   |
 | ------------------ | -------------------------------- |
 | 🔙 Backend         | Node.js, Express.js              |
 | 🗄️ Database        | MongoDB (Mongoose)               |
@@ -49,33 +49,41 @@ This system helps store owners keep track of medicines, expiry dates, stock leve
 
 ### 🧍 Authentication Routes
 
-| Method | Endpoint             | Description                                  |
-| :----: | :------------------- | :------------------------------------------- |
-| `POST` | `/api/auth/register` | 📝 Register a new user (owner)               |
-| `POST` | `/api/auth/login`    | 🔐 Login existing user and receive JWT token |
+| Method | Endpoint                | Description                                  |
+| :----: | :---------------------- | :------------------------------------------- |
+| `POST` | `/api/v1/auth/register` | 📝 Register a new user (owner)               |
+| `POST` | `/api/v1/auth/login`    | 🔐 Login existing user and receive JWT token |
 
 ---
 
 ### 💊 Medicine Management Routes
 
-|  Method  | Endpoint             | Description                         |
-| :------: | :------------------- | :---------------------------------- |
-|  `POST`  | `/api/medicines`     | ➕ Add a new medicine               |
-|  `GET`   | `/api/medicines`     | 📋 Get all medicines                |
-|  `GET`   | `/api/medicines/:id` | 🔍 Get details of a single medicine |
-| `PATCH`  | `/api/medicines/:id` | ✏️ Update medicine details          |
-| `DELETE` | `/api/medicines/:id` | 🗑️ Delete a medicine                |
+#### 🔓 Public Routes
+
+| Method  | Endpoint                   | Description                              |
+| ------- | -------------------------- | ---------------------------------------- |
+| **GET** | `/api/v1/medicines/public` | Get all medicines without authentication |
+
+#### 🔐 Protected Routes (Require JWT Token)
+
+|  Method  | Endpoint               | Description                         |
+| :------: | :--------------------- | :---------------------------------- |
+|  `POST`  | `/api/v1/medicine`     | ➕ Add a new medicine               |
+|  `GET`   | `/api/v1/medicine`     | 📋 Get all medicines                |
+|  `GET`   | `/api/v1/medicine/:id` | 🔍 Get details of a single medicine |
+| `PATCH`  | `/api/v1/medicine/:id` | ✏️ Update medicine details          |
+| `DELETE` | `/api/v1/medicine/:id` | 🗑️ Delete a medicine                |
 
 ---
 
 ### 🔎 Search & Filter
 
-| Method | Endpoint                              | Description                   |
-| :----: | :------------------------------------ | :---------------------------- |
-| `GET`  | `/api/medicines?status=expired`       | 🔍 Get all expired medicines  |
-| `GET`  | `/api/medicines?status=out-of-stock`  | 🚫 Get out-of-stock medicines |
-| `GET`  | `/api/medicines?category=pain-relief` | 🧾 Get medicines by category  |
-| `GET`  | `/api/medicines?name=paracetamol`     | 🔎 Search by medicine name    |
+| Method | Endpoint                                | Description                   |
+| :----: | :-------------------------------------- | :---------------------------- |
+| `GET`  | `/api/v1/medicine?status=expired`       | 🔍 Get all expired medicines  |
+| `GET`  | `/api/v1/medicine?status=out-of-stock`  | 🚫 Get out-of-stock medicines |
+| `GET`  | `/api/v1/medicine?category=pain-relief` | 🧾 Get medicines by category  |
+| `GET`  | `/api/v1/medicine?name=paracetamol`     | 🔎 Search by medicine name    |
 
 ---
 
