@@ -13,6 +13,7 @@ const connectDB = require("./database/connect");
 // Routers
 const authRouter = require("./routes/auth");
 const medicineRouter = require("./routes/medicine");
+const medicinePublicRouter = require("./controllers/medicine-public");
 
 // middlewares
 const authenticatedUser = require("./middlewares/authentication");
@@ -35,13 +36,13 @@ app.use(helmet());
 app.use(cors());
 
 // public medicine route
-app.use("/api/v1/medicine", medicineRouter);
+app.use("/api/v1/medicines/public", medicinePublicRouter);
 
 //routes
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/medicine", authenticatedUser, medicineRouter);
 app.get("/", (req, res) => {
-  res.send("Welcome to the Pharmacy Inventory API");
+  res.send("<h1>Welcome to the Pharmacy Inventory API<h1>");
 });
 
 app.use(notFoundMiddleware);

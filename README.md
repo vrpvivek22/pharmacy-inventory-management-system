@@ -147,19 +147,17 @@ npm start
 
 ---
 
-## 🧠 Validation Example (Joi)
+## 🧪 Test the API in Postman
 
-```js
-const medicineSchema = Joi.object({
-  name: Joi.string().required().messages({
-    "string.empty": "Medicine name is required",
-  }),
-  category: Joi.string().required(),
-  price: Joi.number().positive().required(),
-  quantity: Joi.number().integer().min(0).required(),
-  status: Joi.string().valid("in-stock", "out-of-stock", "expired"),
-});
-```
+- This project is backend-only, so test all endpoints using Postman.
+
+- Register or log in to get a JWT token.
+
+- In Postman, go to the Authorization tab → choose Bearer Token → paste the token.
+
+- Now you can access protected routes like /api/v1/medicine.
+
+- Public routes like /api/v1/public/medicines don’t need authentication.
 
 ---
 

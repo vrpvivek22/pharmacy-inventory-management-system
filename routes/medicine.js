@@ -7,8 +7,8 @@ const {
   addMedicine,
   updateMedicine,
   deleteMedicine,
-  getPublicMedicines,
 } = require("../controllers/medicine");
+const getPublicMedicines = require("../controllers/medicine-public");
 
 router.route("/").get(getAllMedicines).post(addMedicine);
 router
@@ -17,7 +17,7 @@ router
   .delete(deleteMedicine)
   .patch(updateMedicine);
 
-// ✅ Public route (accessible without authentication)
-router.get("/public", getPublicMedicines);
+// Public route (accessible without authentication)
+router.get("/", getPublicMedicines);
 
 module.exports = router;
